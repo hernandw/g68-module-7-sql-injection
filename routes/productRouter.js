@@ -1,8 +1,11 @@
 import express from "express";
+import { getProducts } from "../model/queries.js";
 const router = express.Router();
 
-router.get("/products", (req, res) => {
-    res.send("mostrando todos los productos");
+router.get("/products", async (req, res) => {
+  const resultado = await getProducts();
+
+  res.send(resultado);
 });
 
-export default router
+export default router;
