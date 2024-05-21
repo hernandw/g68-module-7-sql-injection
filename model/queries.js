@@ -12,6 +12,19 @@ const getProducts = async () => {
   }
 };
 
-export {
-    getProducts
-}
+const getProductById = async (id) => {
+
+
+  try {
+    const sql = {
+      text: "select * from clothes where id = $1",
+      values: [id]
+    }
+   const respuesta =  await pool.query(sql)
+   return respuesta.rows
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export { getProducts, getProductById };
