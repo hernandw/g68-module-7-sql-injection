@@ -1,11 +1,9 @@
 import express from "express";
-import path from "path";
-const __dirname = path.resolve();
+import { home } from '../controllers/userController.js'
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html')
-})
+router.get('/', home)
 
 router.get("/login", (req, res) => {
   res.send("Login de usuarios");
